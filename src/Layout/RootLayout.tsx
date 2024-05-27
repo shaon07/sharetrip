@@ -13,10 +13,10 @@ export default function RootLayout({ children }: RootLayoutProps) {
       </header>
       <main className="container mx-auto">
         <div className="w-full flex items-start justify-between gap-4 p-4">
-          <aside className="flex-1">
+          <aside className="w-[248px]">
             <Sidebar />
           </aside>
-          <div className="flex-2">{children}</div>
+          <div className="flex-1">{children}</div>
         </div>
       </main>
     </section>
