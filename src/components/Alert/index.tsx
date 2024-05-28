@@ -14,7 +14,7 @@ export default function Alert({
     <div
       className={`flex items-center gap-2 ${
         type === "warning" ? "bg-secondary-orange" : "bg-green-100"
-      } p-4 rounded-md`}
+      } p-2 rounded-md`}
     >
       <span>
         <IoIosAlert size={24} className="" color="#F27D00" />

@@ -35,15 +35,8 @@ export default function FlightDetailCard() {
         </span>
         <DestinationTitle
           type="secondary"
-          from="Departure from Dhaka"
-          to={
-            <span>
-              <strong className="font-medium text-dark">
-                Terminal 1:&nbsp;
-              </strong>{" "}
-              Hazrat Shahjalal International Airport
-            </span>
-          }
+          from="Layover at Dubai: 12 hr 20 min "
+          to="Dubai International Airport"
         />
       </div>
 
