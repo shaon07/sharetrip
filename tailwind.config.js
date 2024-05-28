@@ -11,7 +11,9 @@ export default {
         'gray-light-100':'#E8F3FF',
         'primary': '#1882FF',
         'secondary-orange': '#FFE1C2',
-        'primary-orange':'#F27D00'
+        'primary-orange':'#F27D00',
+        'dark': '#1A2B3D',
+        'dark-100':'#3E4957'
       }
     },
   },
