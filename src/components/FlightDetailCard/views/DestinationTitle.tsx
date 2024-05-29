@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
 
-type DestinationTitleProps = {
+export type DestinationTitleProps = {
     from: string | ReactNode;
     to: string | ReactNode;
     type?: "primary" | "secondary";

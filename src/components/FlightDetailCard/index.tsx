@@ -1,67 +1,70 @@
-import DestinationTitle from "./views/DestinationTitle";
-import { IoMdPin } from "react-icons/io";
-import FlightTimeLine from "./views/FlightTimeLine";
-import DestinationDetail from "./views/DestinationDetail";
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import FlightRoute from "./ui/FlightRoute";
+import TicketData from "./ui/TicketData";
 
-export default function FlightDetailCard() {
+type FlightDetailCardProps = {
+  flightData: any;
+};
+
+export default function FlightDetailCard({
+  flightData,
+}: FlightDetailCardProps) {
+  const { departure, destination, layover } = flightData;
   return (
     <div className="bg-white p-4 rounded-md">
-      <div className="flex items-center gap-4">
-        <span>
-          <IoMdPin size={20} color="#6B7280" />
-        </span>
-        <DestinationTitle
-          type="secondary"
-          from="Departure from Dhaka"
-          to={
-            <span>
-              <strong className="font-medium text-dark">
-                Terminal 1:&nbsp;
-              </strong>{" "}
-              Hazrat Shahjalal International Airport
-            </span>
-          }
-        />
-      </div>
+      <FlightRoute
+        type="secondary"
+        from={`Departure from ${departure?.from}`}
+        to={
+          <span>
+            <strong className="font-medium text-dark">
+              Terminal {departure?.terminal_number}:&nbsp;
+            </strong>{" "}
+            {departure?.terminal_name}
+          </span>
+        }
+      />
 
-      <div className="flex items-between gap-3 mt-3">
-        <FlightTimeLine />
-        <DestinationDetail isWarning />
-      </div>
+      <TicketData warning={layover?.layover_detail} />
 
-      <div className="flex items-center gap-4 mt-3">
-        <span>
-          <IoMdPin size={20} color="#6B7280" />
-        </span>
-        <DestinationTitle
-          type="secondary"
-          from="Layover at Dubai: 12 hr 20 min "
-          to="Dubai International Airport"
-        />
-      </div>
+      {layover?.at && (
+        <>
+          <FlightRoute
+            type="secondary"
+            from={`Layover at ${layover?.at}: ${layover?.duration}`}
+            to={
+              <span>
+                {layover?.terminal_number && (
+                  <strong className="font-medium text-dark">
+                    Terminal {layover?.terminal_number}:&nbsp;
+                  </strong>
+                )}
 
-      <div className="flex items-between gap-3 mt-3">
-        <FlightTimeLine />
-        <DestinationDetail />
-      </div>
+                {layover?.terminal_name}
+              </span>
+            }
+          />
 
-      <div className="flex items-center gap-4 mt-3">
-        <span>
-          <IoMdPin size={20} color="#1882FF" />
-        </span>
-        <DestinationTitle
+          <TicketData />
+        </>
+      )}
+
+      {destination?.to && (
+        <FlightRoute
           type="primary"
-          from="Departure from Dhaka"
+          from={`Destination at ${destination?.to}`}
           to={
             <span>
-              <strong className="font-medium text-dark">
-                Terminal 1:&nbsp;
-              </strong>{" "}
-              Hazrat Shahjalal International Airport
+              {destination?.terminal_number && (
+                <strong className="font-medium text-dark">
+                  Terminal {destination?.terminal_number}:&nbsp;
+                </strong>
+              )}
+              {destination?.terminal_name}
             </span>
           }
         />
-      </div>
+      )}
     </div>
   );
 }

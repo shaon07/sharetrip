@@ -2,11 +2,11 @@ import FareCard from "./FareCard";
 import Alert from "../../Alert";
 
 type DestinationDetailProps = {
-  isWarning?: boolean;
+  warning?: boolean | string;
 };
 
 export default function DestinationDetail({
-  isWarning = false,
+  warning = false,
 }: DestinationDetailProps) {
   return (
     <div className="w-full flex flex-col gap-3">
@@ -50,11 +50,11 @@ export default function DestinationDetail({
         />
       </div>
 
-      {isWarning && (
+      {warning && (
         <div className="mt-1">
           <Alert
             type="warning"
-            description="Technical stoppage at Malpensa International Airport (Milano). Before booking this flight please check your visa requirements as per your nationality"
+            description={typeof warning === "string" ? warning : ""}
           />
         </div>
       )}
