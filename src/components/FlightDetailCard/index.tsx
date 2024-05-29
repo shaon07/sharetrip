@@ -30,7 +30,7 @@ export default function FlightDetailCard({
       {layover?.at && (
         <>
           <FlightRoute
-            type="secondary"
+            type="primary"
             from={`Layover at ${layover?.at}: ${layover?.duration}`}
             to={
               <span>
@@ -51,7 +51,8 @@ export default function FlightDetailCard({
 
       {destination?.to && (
         <FlightRoute
-          type="primary"
+          type="secondary"
+          isReached
           from={`Destination at ${destination?.to}`}
           to={
             <span>
