@@ -5,7 +5,7 @@ import FlightDetails from "./views/FlightDetails";
 
 export default function HomePageContainer() {
   return (
-    <div className="w-full flex flex-col gap-6">
+    <div className="w-full flex flex-col gap-4">
       <Breadcrumb />
       {checkArray(ticket) &&
         ticket?.map((ticket) => (
